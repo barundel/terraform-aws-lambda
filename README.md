@@ -1,9 +1,6 @@
-# terraform-aws-lambda
-Terraform module for building Lambdas in AWS.
+# terraform-aws-lambda [![Build Status](https://github.com/barundel/terraform-aws-lambda/workflows/Release+a+Version/badge.svg)](https://github.com/barundel/terraform-aws-lambda/actions)
 
-# terraform-aws-apigateway [![Build Status](https://github.com/barundel/terraform-aws-lambda/workflows/build/badge.svg)](https://github.com/barundel/terraform-aws-lambda/actions)
-
-> **A Terraform module for creating API Gateway resources.**
+> **A Terraform module for creating Lambda resources.**
 
 ## Table of Contents
 

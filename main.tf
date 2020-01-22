@@ -5,8 +5,6 @@ locals {
   ]
 }
 
-
-
 resource "aws_lambda_function" "lambda_function" {
   s3_bucket         = data.aws_s3_bucket_object.object.bucket
   s3_key            = data.aws_s3_bucket_object.object.key
@@ -54,7 +52,7 @@ resource "aws_lambda_function" "lambda_function" {
 
 
 ##########
-# Suspend Lambda
+# Lambda Role
 ##########
 
 resource "aws_iam_role" "lambda_role" {
