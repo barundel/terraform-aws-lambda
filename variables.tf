@@ -12,7 +12,7 @@ variable "role" {
 }
 
 variable "runtime" {
-  description = "See [documentation](https://github.com/barundel/terraform-aws-logging/tree/master/README.md) for valid values"
+  description = "See [documentation](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values"
 }
 
 variable "tags" {
