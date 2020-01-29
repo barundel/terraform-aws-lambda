@@ -6,9 +6,14 @@ variable "handler" {
   description = "The function entrypoint in your code"
 }
 
-variable "role" {
+variable "role_arn" {
   description = "IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to."
   default = ""
+}
+
+variable "create_role" {
+  description = "Tue or False on if to create the default role. Set to false if your going to pass in your own role via the var role_arn"
+  default = true
 }
 
 variable "runtime" {
