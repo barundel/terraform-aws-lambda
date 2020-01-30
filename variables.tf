@@ -7,7 +7,7 @@ variable "handler" {
 }
 
 variable "role_arn" {
-  description = "IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to."
+  description = "IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to"
   default = ""
 }
 
@@ -26,11 +26,11 @@ variable "tags" {
 }
 
 variable "artifact_bucket" {
-  description = "The S3 bucket where the Lambda source code exists."
+  description = "The S3 bucket where the Lambda source code exists"
 }
 
 variable "path_to_lambda_object" {
-  description = "The path to the object in the S3 bucket."
+  description = "The path to the object in the S3 bucket"
 }
 
 variable "timeout" {
@@ -62,4 +62,9 @@ variable "reserved_concurrent_executions" {
 variable "description" {
   default = ""
   description = "Description of what your Lambda Function does"
+}
+
+variable "extra_policy_arns" {
+  default = []
+  description = "Extra policy ARNs to attach to the Lambda role"
 }

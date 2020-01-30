@@ -1,7 +1,8 @@
 locals {
   archive_file_dir = "${path.module}/lib/"
   lambda_permissions = [
-    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+    var.extra_policy_arns
   ]
   iam_role_arn = coalescelist(aws_iam_role.lambda_role.*.arn, [var.role_arn])
 

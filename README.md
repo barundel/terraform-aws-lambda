@@ -18,10 +18,16 @@ TODO: Example
 
 #### Complete Example
 
+##### Simple Example
 ````
-module "lambda" {
+module "lambda_1" {
+  source = "git::github.com/barundel/terraform-aws-lambda?ref=v1.0.0"
 
-soon
+  artifact_bucket = "name_of_your_bucket"
+  function_name = "your_function"
+  handler = "hello.handler"
+  path_to_lambda_object = "the_s3_path.zip"
+  runtime = "provided"
 
 }
 ````
