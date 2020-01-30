@@ -55,7 +55,11 @@ soon
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| invoke\_arn | The ARN to be used for invoking Lambda Function from API Gateway - to be used in aws\_api\_gateway\_integration's uri |
+| lambda\_arn | The Amazon Resource Name (ARN) identifying your Lambda Function |
+| qualified\_arn | The Amazon Resource Name (ARN) identifying your Lambda Function Version (if versioning is enabled via publish = true). |
 <!--- END_TF_DOCS --->
 
 ## License
