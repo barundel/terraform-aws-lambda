@@ -1,10 +1,11 @@
 locals {
   archive_file_dir = "${path.module}/lib/"
-  lambda_permissions = coalescelist([
+
+  lambda_permissions = concat([
     "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"],
-  [
     var.extra_policy_arns
-  ])
+  )
+
   iam_role_arn = coalescelist(aws_iam_role.lambda_role.*.arn, [
     var.role_arn])
 
@@ -68,5 +69,5 @@ resource "aws_iam_role_policy_attachment" "attach" {
   count = var.create_role ? length(local.lambda_permissions) : 0
 
   role = element(concat(aws_iam_role.lambda_role.*.name, list("")), 0)
-  policy_arn = local.lambda_permissions[count.index]
+  policy_arn = element(local.lambda_permissions, count.index)
 }

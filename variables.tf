@@ -66,5 +66,6 @@ variable "description" {
 
 variable "extra_policy_arns" {
   default = []
+  type = list(string)
   description = "Extra policy ARNs to attach to the Lambda role"
 }
