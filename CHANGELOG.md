@@ -1,5 +1,13 @@
 All notable changes to this terraform will be documented in this file.
 
+# [1.1.0](https://github.com/barundel/terraform-aws-lambda/compare/v1.0.0...v1.1.0) (2020-01-30)
+
+
+### Features
+
+* adding a few outputs for the lambda resource ([7a17b77](https://github.com/barundel/terraform-aws-lambda/commit/7a17b775055113a7cee9ecd9fe43a158c9524638))
+* adding new var for extra policy arns ([518c3d2](https://github.com/barundel/terraform-aws-lambda/commit/518c3d238325feadd55b3074d15f99d6bf7f248c))
+
 # 1.0.0 (2020-01-29)
 
 
