@@ -1,12 +1,15 @@
 locals {
   archive_file_dir = "${path.module}/lib/"
-  lambda_permissions = [
-    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+  lambda_permissions = coalescelist([
+    "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"],
+  [
     var.extra_policy_arns
-  ]
-  iam_role_arn = coalescelist(aws_iam_role.lambda_role.*.arn, [var.role_arn])
+  ])
+  iam_role_arn = coalescelist(aws_iam_role.lambda_role.*.arn, [
+    var.role_arn])
 
-  environment_map = var.variables == null ? [] : [var.variables]
+  environment_map = var.variables == null ? [] : [
+    var.variables]
 
 
 }
@@ -16,18 +19,18 @@ resource "random_id" "randomid" {
 }
 
 resource "aws_lambda_function" "lambda_function" {
-  s3_bucket         = data.aws_s3_bucket_object.object.bucket
-  s3_key            = data.aws_s3_bucket_object.object.key
+  s3_bucket = data.aws_s3_bucket_object.object.bucket
+  s3_key = data.aws_s3_bucket_object.object.key
   s3_object_version = data.aws_s3_bucket_object.object.version_id
 
   function_name = var.function_name
   description = var.description
 
-  handler       = var.handler
-  runtime       = var.runtime
-  timeout       = var.timeout
-  memory_size   = var.memory_size
-  role          = local.iam_role_arn[0]
+  handler = var.handler
+  runtime = var.runtime
+  timeout = var.timeout
+  memory_size = var.memory_size
+  role = local.iam_role_arn[0]
 
   dynamic "vpc_config" {
     for_each = var.vpc_config
@@ -38,7 +41,8 @@ resource "aws_lambda_function" "lambda_function" {
   }
 
   dynamic "environment" {
-    for_each = length(keys(var.variables)) > 0? ["dummy"]:[]
+    for_each = length(keys(var.variables)) > 0? [
+      "dummy"]:[]
     content {
       variables = var.variables
     }
@@ -47,8 +51,6 @@ resource "aws_lambda_function" "lambda_function" {
   tags = var.tags
 
 }
-
-
 
 ##########
 # Lambda Role
@@ -65,6 +67,6 @@ resource "aws_iam_role" "lambda_role" {
 resource "aws_iam_role_policy_attachment" "attach" {
   count = var.create_role ? length(local.lambda_permissions) : 0
 
-  role       = element(concat(aws_iam_role.lambda_role.*.name, list("")), 0)
+  role = element(concat(aws_iam_role.lambda_role.*.name, list("")), 0)
   policy_arn = local.lambda_permissions[count.index]
 }
