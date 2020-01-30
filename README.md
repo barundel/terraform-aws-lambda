@@ -49,7 +49,7 @@ module "lambda_1" {
 | artifact\_bucket | The S3 bucket where the Lambda source code exists | `any` | n/a | yes |
 | create\_role | Tue or False on if to create the default role. Set to false if your going to pass in your own role via the var role\_arn | `bool` | `true` | no |
 | description | Description of what your Lambda Function does | `string` | `""` | no |
-| extra\_policy\_arns | Extra policy ARNs to attach to the Lambda role | `list` | `[]` | no |
+| extra\_policy\_arns | Extra policy ARNs to attach to the Lambda role | `list(string)` | `[]` | no |
 | function\_name | A unique name for your Lambda Function | `any` | n/a | yes |
 | handler | The function entrypoint in your code | `any` | n/a | yes |
 | memory\_size | Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) | `number` | `128` | no |
