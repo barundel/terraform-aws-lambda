@@ -12,11 +12,17 @@
 
 This project is maintained [Ben](https://github.com/barundel), anyone is welcome to contribute. 
 
+TODO:
+* Support CloudWatch Log Groups 
+
 ## Getting Started
 
-##### Simple Example
+This module will create a lambda function based on your inputs. As default it will also create a basic IAM role and attach it to the function, this basic role will give the lambda the ability to log to CloudWatch. You can override this by passing in your own IAM Role ARN or you can amend the permissions of the basic role by passing in a list of extra IAM Policy ARNs.
+
+#### Simple Example
 ````
 module "lambda_1" {
+
   source = "git::github.com/barundel/terraform-aws-lambda?ref=v1.0.0"
 
   artifact_bucket = "name_of_your_bucket"
