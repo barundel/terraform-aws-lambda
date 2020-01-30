@@ -14,10 +14,6 @@ This project is maintained [Ben](https://github.com/barundel), anyone is welcome
 
 ## Getting Started
 
-TODO: Example 
-
-#### Complete Example
-
 ##### Simple Example
 ````
 module "lambda_1" {
