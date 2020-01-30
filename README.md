@@ -44,15 +44,16 @@ module "lambda_1" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
-| artifact\_bucket | The S3 bucket where the Lambda source code exists. | `any` | n/a | yes |
+| artifact\_bucket | The S3 bucket where the Lambda source code exists | `any` | n/a | yes |
 | create\_role | Tue or False on if to create the default role. Set to false if your going to pass in your own role via the var role\_arn | `bool` | `true` | no |
 | description | Description of what your Lambda Function does | `string` | `""` | no |
+| extra\_policy\_arns | Extra policy ARNs to attach to the Lambda role | `list` | `[]` | no |
 | function\_name | A unique name for your Lambda Function | `any` | n/a | yes |
 | handler | The function entrypoint in your code | `any` | n/a | yes |
 | memory\_size | Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) | `number` | `128` | no |
-| path\_to\_lambda\_object | The path to the object in the S3 bucket. | `any` | n/a | yes |
+| path\_to\_lambda\_object | The path to the object in the S3 bucket | `any` | n/a | yes |
 | reserved\_concurrent\_executions | The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1. See [Managing Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) | `number` | `-1` | no |
-| role\_arn | IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to. | `string` | `""` | no |
+| role\_arn | IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to | `string` | `""` | no |
 | runtime | See [documentation](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values | `any` | n/a | yes |
 | tags | Map of tags to assign to the resources | `map` | `{}` | no |
 | timeout | The amount of time your Lambda Function has to run in seconds. Defaults to 3. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) | `number` | `3` | no |
