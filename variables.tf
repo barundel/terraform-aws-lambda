@@ -48,12 +48,6 @@ variable "variables" {
   description = "A map that defines environment variables for the Lambda function"
 }
 
-variable "vpc_config" {
-  description = "Provide this to allow your function to access your VPC"
-  default = {}
-  type = any
-}
-
 variable "reserved_concurrent_executions" {
   default = -1
   description = "The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1. See [Managing Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html)"
@@ -68,4 +62,13 @@ variable "extra_policy_arns" {
   default = []
   type = list(string)
   description = "Extra policy ARNs to attach to the Lambda role"
+}
+
+variable "security_group_ids" {
+  default = []
+  description = "List of security group IDs to asign to your lambda if in a vpc."
+}
+variable "subnet_ids" {
+  default = []
+  description = "List of SubnetIDs to house your lambda inside a vpc"
 }

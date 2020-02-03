@@ -33,12 +33,9 @@ resource "aws_lambda_function" "lambda_function" {
   memory_size = var.memory_size
   role = local.iam_role_arn[0]
 
-  dynamic "vpc_config" {
-    for_each = var.vpc_config
-    content {
-      security_group_ids = lookup(vpc_config, "security_group_ids", null)
-      subnet_ids = lookup(vpc_config, "subnet_ids", null)
-    }
+  vpc_config {
+    security_group_ids = var.security_group_ids
+    subnet_ids = var.subnet_ids
   }
 
   dynamic "environment" {
