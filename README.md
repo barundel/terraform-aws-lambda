@@ -58,10 +58,11 @@ module "lambda_1" {
 | reserved\_concurrent\_executions | The amount of reserved concurrent executions for this lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations. Defaults to Unreserved Concurrency Limits -1. See [Managing Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/scaling.html) | `number` | `-1` | no |
 | role\_arn | IAM role attached to the Lambda Function. This governs both who / what can invoke your Lambda Function, as well as what resources our Lambda Function has access to | `string` | `""` | no |
 | runtime | See [documentation](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-Runtime) for valid values | `any` | n/a | yes |
+| security\_group\_ids | List of security group IDs to asign to your lambda if in a vpc. | `list` | `[]` | no |
+| subnet\_ids | List of SubnetIDs to house your lambda inside a vpc | `list` | `[]` | no |
 | tags | Map of tags to assign to the resources | `map` | `{}` | no |
 | timeout | The amount of time your Lambda Function has to run in seconds. Defaults to 3. See [Limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) | `number` | `3` | no |
 | variables | A map that defines environment variables for the Lambda function | `map` | `{}` | no |
-| vpc\_config | Provide this to allow your function to access your VPC | `map` | `{}` | no |
 
 ## Outputs
 
