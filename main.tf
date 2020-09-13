@@ -27,6 +27,8 @@ resource "aws_lambda_function" "lambda_function" {
   function_name = var.function_name
   description = var.description
 
+  publish = var.publish
+
   handler = var.handler
   runtime = var.runtime
   timeout = var.timeout
@@ -68,3 +70,18 @@ resource "aws_iam_role_policy_attachment" "attach" {
   role = element(concat(aws_iam_role.lambda_role.*.name, list("")), 0)
   policy_arn = element(local.lambda_permissions, count.index)
 }
+
+##########
+# Lambda Alias
+##########
+resource "aws_lambda_alias" "lambda_alias" {
+  count = length(var.lambda_alias)
+
+  name             = var.lambda_alias[count.index]
+  function_name    = aws_lambda_function.lambda_function.arn
+  function_version = "$LATEST"
+
+}
+
+
+

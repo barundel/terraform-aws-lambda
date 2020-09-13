@@ -72,3 +72,12 @@ variable "subnet_ids" {
   default = []
   description = "List of SubnetIDs to house your lambda inside a vpc"
 }
+
+variable "lambda_alias" {
+  description = "List of Aliases to assign lambda function."
+}
+
+variable "publish" {
+  default = true
+  description = "True or False on if to publish lambda"
+}
