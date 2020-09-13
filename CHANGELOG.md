@@ -1,5 +1,13 @@
 All notable changes to this terraform will be documented in this file.
 
+## [1.1.2](https://github.com/barundel/terraform-aws-lambda/compare/v1.1.1...v1.1.2) (2020-09-13)
+
+
+### Bug Fixes
+
+* resolving issue with vpc config atributes ([743361a](https://github.com/barundel/terraform-aws-lambda/commit/743361aeb5a22f1c34675561524cfece4ee0d6cb))
+* updating readme ([c6bf8bd](https://github.com/barundel/terraform-aws-lambda/commit/c6bf8bd3044bca920278e40ee0ecfa0271607712))
+
 ## [1.1.1](https://github.com/barundel/terraform-aws-lambda/compare/v1.1.0...v1.1.1) (2020-01-30)
 
 
