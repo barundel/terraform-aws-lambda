@@ -7,6 +7,7 @@ data "aws_iam_policy_document" "lambda_trust_profile" {
 
       identifiers = [
         "lambda.amazonaws.com",
+        "edgelambda.amazonaws.com",
       ]
     }
 
