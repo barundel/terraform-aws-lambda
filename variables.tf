@@ -27,10 +27,12 @@ variable "tags" {
 
 variable "artifact_bucket" {
   description = "The S3 bucket where the Lambda source code exists"
+  default = null
 }
 
 variable "path_to_lambda_object" {
   description = "The path to the object in the S3 bucket"
+  default = null
 }
 
 variable "timeout" {
@@ -75,6 +77,7 @@ variable "subnet_ids" {
 
 variable "lambda_alias" {
   description = "List of Aliases to assign lambda function."
+  default = ""
 }
 
 variable "publish" {

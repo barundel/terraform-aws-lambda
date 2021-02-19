@@ -22,3 +22,9 @@ output "lambda_alias_invoke_arn" {
   value = aws_lambda_alias.lambda_alias.*.invoke_arn
   description = "Lambda Alias Invoke ARN"
 }
+
+//output "test" {
+//  value = {
+//    test = var.lambda_alias
+//  }
+//}

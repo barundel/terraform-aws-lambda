@@ -15,14 +15,20 @@ locals {
 
 }
 
+variable "bucket_config" {
+  type = map(string)
+  description = "Bucket config to avoid data lookup"
+  default = null
+}
+
 resource "random_id" "randomid" {
   byte_length = 4
 }
 
 resource "aws_lambda_function" "lambda_function" {
-  s3_bucket = data.aws_s3_bucket_object.object.bucket
-  s3_key = data.aws_s3_bucket_object.object.key
-  s3_object_version = data.aws_s3_bucket_object.object.version_id
+  s3_bucket = length(var.bucket_config) > 0 ? lookup(var.bucket_config, "bucket") : concat(data.aws_s3_bucket_object.object.*.bucket, [""])[0]
+  s3_key = length(var.bucket_config) > 0 ? lookup(var.bucket_config, "key") : concat(data.aws_s3_bucket_object.object.*.key, [""])[0]
+  s3_object_version = length(var.bucket_config) > 0 ? lookup(var.bucket_config, "version_id") : concat(data.aws_s3_bucket_object.object.*.version_id, [""])[0]
 
   function_name = var.function_name
   description = var.description
@@ -75,7 +81,7 @@ resource "aws_iam_role_policy_attachment" "attach" {
 # Lambda Alias
 ##########
 resource "aws_lambda_alias" "lambda_alias" {
-  count = length(var.lambda_alias)
+  count = length(var.lambda_alias) > 0 ? length(var.lambda_alias) : 0
 
   name             = var.lambda_alias[count.index]
   function_name    = aws_lambda_function.lambda_function.arn
