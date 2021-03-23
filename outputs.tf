@@ -18,6 +18,11 @@ output "lambda_alias_arn" {
   description = "Lambda Alias ARN"
 }
 
+output "lambda_function_name" {
+  value = aws_lambda_function.lambda_function.function_name
+  description = "Function name of the lambda."
+}
+
 output "lambda_alias_invoke_arn" {
   value = aws_lambda_alias.lambda_alias.*.invoke_arn
   description = "Lambda Alias Invoke ARN"
