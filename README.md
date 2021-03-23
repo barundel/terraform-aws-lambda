@@ -82,6 +82,7 @@ module "lambda_1" {
 | lambda\_alias\_arn | Lambda Alias ARN |
 | lambda\_alias\_invoke\_arn | Lambda Alias Invoke ARN |
 | lambda\_arn | The Amazon Resource Name (ARN) identifying your Lambda Function |
+| lambda\_function\_name | Function name of the lambda. |
 | qualified\_arn | The Amazon Resource Name (ARN) identifying your Lambda Function Version (if versioning is enabled via publish = true). |
 
 <!--- END_TF_DOCS --->
