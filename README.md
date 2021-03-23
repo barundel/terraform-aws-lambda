@@ -55,7 +55,7 @@ module "lambda_1" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | artifact\_bucket | The S3 bucket where the Lambda source code exists | `any` | `null` | no |
-| bucket\_config | Bucket config to avoid data lookup | `map(string)` | `null` | no |
+| bucket\_config | Bucket config to avoid data lookup | `map(string)` | `{}` | no |
 | create\_role | Tue or False on if to create the default role. Set to false if your going to pass in your own role via the var role\_arn | `bool` | `true` | no |
 | description | Description of what your Lambda Function does | `string` | `""` | no |
 | extra\_policy\_arns | Extra policy ARNs to attach to the Lambda role | `list(string)` | `[]` | no |
