@@ -15,12 +15,6 @@ locals {
 
 }
 
-variable "bucket_config" {
-  type = map(string)
-  description = "Bucket config to avoid data lookup"
-  default = null
-}
-
 resource "random_id" "randomid" {
   byte_length = 4
 }

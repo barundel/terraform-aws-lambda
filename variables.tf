@@ -2,6 +2,12 @@ variable "function_name" {
   description = "A unique name for your Lambda Function"
 }
 
+variable "bucket_config" {
+  type = map(string)
+  description = "Bucket config to avoid data lookup"
+  default = {}
+}
+
 variable "handler" {
   description = "The function entrypoint in your code"
 }
